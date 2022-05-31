@@ -20,10 +20,13 @@ class MyDrawer extends StatelessWidget {
                 ),
               )),
           ListTile(
-            title: Text('Home',style: TextStyle(fontSize: 22),),
+            title: Text('Counter',style: TextStyle(fontSize: 22),),
             leading: Icon(Icons.home,color: Colors.orange,),
             trailing: Icon(Icons.arrow_right,color: Colors.orange,),
-            onTap: (){},
+            onTap: (){
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, "/counter");
+            },
           ),
           Divider(height: 2,color: Colors.deepOrange,),
           ListTile(
@@ -40,7 +43,10 @@ class MyDrawer extends StatelessWidget {
             title: Text('Gallery',style: TextStyle(fontSize: 22),),
             leading: Icon(Icons.home,color: Colors.orange,),
             trailing: Icon(Icons.arrow_right,color: Colors.orange,),
-            onTap: (){},
+            onTap: (){
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, "/gallery");
+            },
           ),
           Divider(height: 2,color: Colors.deepOrange,),
         ],

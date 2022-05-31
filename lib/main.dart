@@ -1,3 +1,5 @@
+import 'package:first_flutter_app/ui/pages/counter.page.dart';
+import 'package:first_flutter_app/ui/pages/gallery.page.dart';
 import 'package:first_flutter_app/ui/pages/home.page.dart';
 import 'package:first_flutter_app/ui/pages/profil.page.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        "/home":(context)=>HomePage(),
+        "/":(context)=>HomePage(),
         "/profil":(context)=>ProfilPage(),
+        "/gallery":(context)=>GalleryPage(),
+        "/counter":(context)=>CounterPage(),
       },
       theme: ThemeData(primarySwatch: Colors.deepOrange),
-      initialRoute: "/home", //if is not exist you have to declare "/" default rout
+      initialRoute: "/", //if is not exist you have to declare "/" default rout
     );
   }
 }
