@@ -22,10 +22,41 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(title: Text('Home'),),
       body: Center(
         child: Text("Home Page",
         style: Theme.of(context).textTheme.headline2),
+      ),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white,
+                  Colors.deepOrange
+                ]
+              )
+            ),
+          child: Center(
+            child: CircleAvatar(
+              backgroundImage: AssetImage("images/mohamed_kaffouh_profil.jpeg"),
+              radius: 60,
+            ),
+          )
+      )
+        ],
       ),
     );
   }
