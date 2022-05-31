@@ -1,6 +1,8 @@
+import 'package:first_flutter_app/ui/pages/home.page.dart';
+import 'package:first_flutter_app/ui/pages/profil.page.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -8,56 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MyDrawer(),
-      appBar: AppBar(title: Text('Home'),),
-      body: Center(
-        child: Text("Home Page",
-        style: Theme.of(context).textTheme.headline2),
-      ),
-    );
-  }
-}
-
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Colors.deepOrange
-                ]
-              )
-            ),
-          child: Center(
-            child: CircleAvatar(
-              backgroundImage: AssetImage("images/mohamed_kaffouh_profil.jpeg"),
-              radius: 60,
-            ),
-          )
-      )
-        ],
-      ),
+      routes: {
+        "/home":(context)=>HomePage(),
+        "/profil":(context)=>ProfilPage(),
+      },
+      theme: ThemeData(primarySwatch: Colors.deepOrange),
+      initialRoute: "/home", //if is not exist you have to declare "/" default rout
     );
   }
 }
