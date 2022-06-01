@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/config/global.params.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -9,46 +10,42 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Colors.white, Colors.deepOrange])),
               child: Center(
-                child: CircleAvatar(
-                  backgroundImage:
-                  AssetImage("images/mohamed_kaffouh_profil.jpeg"),
-                  radius: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
+                    CircleAvatar(
+                      backgroundImage:
+                      AssetImage("images/mohamed_kaffouh_profil.jpeg"),
+                      radius: 30,
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                      AssetImage("images/unknown.jpg"),
+                      radius: 60,
+                    ),
+                  ],
                 ),
               )),
-          ListTile(
-            title: Text('Counter',style: TextStyle(fontSize: 22),),
-            leading: Icon(Icons.home,color: Colors.orange,),
-            trailing: Icon(Icons.arrow_right,color: Colors.orange,),
-            onTap: (){
-              Navigator.of(context).pop();
-              Navigator.pushNamed(context, "/counter");
-            },
-          ),
-          Divider(height: 2,color: Colors.deepOrange,),
-          ListTile(
-            title: Text('Profil',style: TextStyle(fontSize: 22),),
-            leading: Icon(Icons.home,color: Colors.orange,),
-            trailing: Icon(Icons.arrow_right,color: Colors.orange,),
-            onTap: (){
-              Navigator.of(context).pop();
-              Navigator.pushNamed(context, "/profil");
-            },
-          ),
-          Divider(height: 2,color: Colors.deepOrange,),
-          ListTile(
-            title: Text('Gallery',style: TextStyle(fontSize: 22),),
-            leading: Icon(Icons.home,color: Colors.orange,),
-            trailing: Icon(Icons.arrow_right,color: Colors.orange,),
-            onTap: (){
-              Navigator.of(context).pop();
-              Navigator.pushNamed(context, "/gallery");
-            },
-          ),
-          Divider(height: 2,color: Colors.deepOrange,),
+          ...(GlobalParams.menus).map((item) {
+            return Column(
+              children: [
+                ListTile(
+                  title: Text('${item['title']}',style: const TextStyle(fontSize: 22),),
+                  leading: item['icon'],
+                  trailing: const Icon(Icons.arrow_right,color: Colors.orange,),
+                  onTap: (){
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, "${item['route']}");
+                  },
+                ),
+                Divider(color: Colors.deepOrange,height: 4,)
+              ],
+            );
+          })
         ],
       ),
     );

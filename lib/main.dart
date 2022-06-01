@@ -1,7 +1,7 @@
 import 'package:first_flutter_app/ui/pages/counter.page.dart';
 import 'package:first_flutter_app/ui/pages/gallery.page.dart';
 import 'package:first_flutter_app/ui/pages/home.page.dart';
-import 'package:first_flutter_app/ui/pages/profil.page.dart';
+import 'package:first_flutter_app/ui/pages/meteo.page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         "/":(context)=>HomePage(),
-        "/profil":(context)=>ProfilPage(),
+        "/meteo":(context)=>MeteoPage(),
         "/gallery":(context)=>GalleryPage(),
         "/counter":(context)=>CounterPage(),
       },
